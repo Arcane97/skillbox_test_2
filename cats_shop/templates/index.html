@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}Котики{% endblock %}
+
+
+{% block main %}
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <h1 class="fw-light"> {{ title }} </h1><br>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+      {% for cat_data in cats_data %}
+        <div class="col">
+          <div class="card shadow-sm">
+
+            <img height="225" class="card-img-top" src="{{ url_for('static', filename=cat_data.image_url) }}"/>
+
+            <div class="card-body">
+              <h5 class="card-title">{{ cat_data.name }}</h5>
+              <p class="card-text">
+                Возраст (год): {{cat_data.age}}<br>
+                Порода: {{cat_data.breed}}<br>
+                Описание: {{cat_data.description}}
+              </p>
+
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a type="button" class="btn btn-sm btn-outline-secondary" href="{{ url_for('cats.cat_page', cat_id=cat_data.id) }}">Смотреть</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

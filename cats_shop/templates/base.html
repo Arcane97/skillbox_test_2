@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>  {% block title %} {% endblock %} </title>
+
+    <!-- Bootstrap core CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+<header>
+
+
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <a href="/" class="navbar-brand">
+        <strong>Котики</strong>
+      </a>
+
+      <form class="navbar navbar-light bg-dark" action="{{ url_for('cats.index') }}" method="GET">
+
+        <div class="input-group">
+          <input name="search" type="text" class="form-control" placeholder="Поиск"
+                 aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ request.args.get('search', '')}}">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Найти</button>
+          </div>
+        </div>
+      </form>
+
+<!--      <nav class="navbar navbar-light bg-dark">-->
+<!--        <form class="form-inline align-items-end">-->
+<!--          <input class="form-control " type="search" placeholder="Search" aria-label="Search">-->
+<!--          <button class="btn btn-outline-success align-self-ed" type="submit">Search</button>-->
+<!--        </form>-->
+<!--      </nav>-->
+<!--      <div class="d-flex flex-row-reverse">-->
+<!--        <form class="form-inline" action="{{ url_for('cats.index') }}">-->
+<!--            <input class="form-control" name="search" type="text" placeholder="Поиск" value="" required />-->
+<!--            <button class="btn btn-outline-success" type="submit">Поиск</button>-->
+<!--        </form>-->
+<!--      </div>-->
+
+    </div>
+  </div>
+
+</header>
+
+<main role="main" class="container">
+  {% block main %}
+  {% endblock %}
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="/">Наверх</a>
+    </p>
+    <p class="mb-1">Котики <3</p>
+  </div>
+</footer>
+      
+  </body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ cat_data.name }} {% endblock %}
+
+
+{% block main %}
+<section class="py-5 text-center container">
+<div class="row py-lg-5">
+  <div class="col-lg-6 col-md-8 mx-auto">
+    <h1 class="fw-light">{{ cat_data.name }}</h1><br>
+      <div class="row align-items-center">
+        <div class="col">
+          <img height="225"  src="{{ url_for('static', filename=cat_data.image_url) }}"/>
+        </div>
+        <div class="col">
+            <p class="lead text-muted">
+                        Возраст (год): {{cat_data.age}}<br>
+                        Порода: {{cat_data.breed}}<br>
+                        Описание: {{cat_data.description}}</p>
+            <p>
+              <a href="/" class="btn btn-primary my-2">Купить</a>
+        </div>
+      </div>
+    </p>
+  </div>
+</div>
+</section>
+{% endblock %}
